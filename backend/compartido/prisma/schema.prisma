@@ -1,0 +1,668 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  candidate
+  company
+  admin
+}
+
+model User {
+  id                         String                       @id
+  email                      String                       @unique
+  displayName                String
+  role                       UserRole
+  plan                       String
+  createdAt                  DateTime                     @default(now())
+  updatedAt                  DateTime                     @updatedAt
+  credential                 Credential?
+  profile                    Profile?
+  sessions                   Session[]
+  jobs                       Job[]
+  applications               Application[]
+  notifications              Notification[]
+  events                     Event[]
+  preferences                Preference?
+  savedVacancies             SavedVacancy[]
+  categoryInterests          CategoryInterest[]
+  activationMilestones       ActivationMilestone[]
+  verificationRequests       VerificationRequest[]
+  retentionTasks             RetentionTask[]
+  matchingFeedbackGiven      MatchingFeedback[]           @relation("MatchingFeedbackCompany")
+  matchingFeedbackReceived   MatchingFeedback[]           @relation("MatchingFeedbackCandidate")
+  matchingCalibrations       MatchingCalibration[]
+  matchingCalibrationHistory MatchingCalibrationHistory[]
+  billingCheckoutSessions    BillingCheckoutSession[]
+  comments                   Comment[]
+  certificationAssets        CertificationAsset[]
+  privateMediaAssets         PrivateMediaAsset[]
+  candidateSkills            CandidateSkill[]
+  candidateExperiences       CandidateExperience[]
+  notificationEmailTypes     NotificationEmailType[]
+  readNotificationLinks      UserReadNotification[]
+  hiddenNotificationLinks    UserHiddenNotification[]
+  notificationInboxItems     NotificationInboxItem[]
+  favoriteCandidates         CompanyFavoriteCandidate[]   @relation("CompanyFavorites")
+  favoritedByCompanies       CompanyFavoriteCandidate[]   @relation("CandidateFavorites")
+  applicantNotes             CompanyApplicantNote[]       @relation("CompanyApplicantNotes")
+  dashboardPreferences       CompanyDashboardPreference[]
+  billingHistoryEntries      BillingHistoryEntry[]
+  purchaseHistoryEntries     PurchaseHistory[]
+}
+
+model Event {
+  id           String   @id
+  userId       String?
+  type         String
+  entityId     String
+  metadataJson String?
+  sessionId    String?
+  source       String?
+  surface      String?
+  pathname     String?
+  referrer     String?
+  deviceType   String?
+  actorRole    String?
+  dedupeKey    String?
+  contextJson  String?
+  timeOnPageMs Int?
+  happenedAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([type])
+  @@index([entityId])
+  @@index([createdAt])
+  @@index([userId, type, happenedAt])
+  @@index([entityId, type, happenedAt])
+  @@index([dedupeKey])
+}
+
+model Credential {
+  userId       String @id
+  email        String @unique
+  passwordHash String
+  passwordSalt String
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  token               String        @id
+  sessionId           String?       @unique
+  userId              String
+  expiresAt           DateTime
+  csrfSalt            String?
+  signingSalt         String?
+  signingKeyExpiresAt DateTime?
+  revokedAt           DateTime?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nonces              SessionNonce[]
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model SessionNonce {
+  id        String   @id @default(cuid())
+  sessionId String
+  nonceHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  session   Session  @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+
+  @@unique([sessionId, nonceHash])
+  @@index([sessionId, expiresAt])
+  @@index([expiresAt])
+}
+
+model WebhookDelivery {
+  id          String    @id @default(cuid())
+  provider    String
+  deliveryId  String
+  payloadHash String
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+
+  @@unique([provider, deliveryId])
+  @@index([provider, receivedAt])
+}
+
+model Profile {
+  userId                   String    @id
+  nombre                   String
+  rol                      String
+  tipoRegistro             String?
+  ubicacion                String?
+  telefono                 String?
+  website                  String?
+  avatar                   String?
+  avatarStoredFileName     String?
+  avatarAssetPublicId      String?
+  modalidadTrabajo         String?
+  expectativaSalarial      String?
+  expectativaSalarialMin   String?
+  expectativaSalarialMax   String?
+  jornada                  String?
+  resumenPerfil            String?
+  categoriasEnfoqueJson    String?
+  cv                       String?
+  cvStoredFileName         String?
+  cvAssetPublicId          String?
+  bio                      String?
+  idiomasJson              String?
+  disponibilidadViaje      String?
+  movilidad                String?
+  skillsJson               String?
+  candidateSkillsJson      String?
+  experienciaJson          String?
+  professionalProfileJson  String?
+  educationProfileJson     String?
+  certificationProfileJson String?
+  workPreferencesJson      String?
+  locationProfileJson      String?
+  profileQualityJson       String?
+  profileVisibility        String?
+  companyName              String?
+  industry                 String?
+  companySize              String?
+  companyDescription       String?
+  companyCulture           String?
+  companyMission           String?
+  companyVision            String?
+  companyContactEmail      String?
+  companyWebsite           String?
+  companyLocation          String?
+  companyBenefitsJson      String?
+  companySocialLinksJson   String?
+  companyBanner            String?
+  activeJobs               Int?
+  verificationStatus       String?
+  analyticsSummaryJson     String?
+  planStatus               String?
+  billingProvider          String?
+  billingCustomerId        String?
+  billingSubscriptionId    String?
+  billingCheckoutSessionId String?
+  currentPeriodEnd         DateTime?
+  candidatePlanStateJson   String?
+  companyPlanStateJson     String?
+  hiringFocusJson          String?
+  user                     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PrivateMediaAsset {
+  id              String   @id @default(cuid())
+  publicId        String   @unique
+  ownerUserId     String
+  mediaType       String
+  visibility      String   @default("private")
+  permissionsJson String?
+  storageKey      String
+  mimeType        String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  owner           User     @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
+
+  @@index([ownerUserId])
+  @@index([mediaType])
+  @@index([publicId, ownerUserId])
+}
+
+model CertificationAsset {
+  id                  String   @id @default(cuid())
+  publicId            String   @unique
+  ownerUserId         String
+  mediaKind           String
+  visibility          String   @default("private")
+  permissionsJson     String?
+  storageKey          String
+  thumbnailStorageKey String?
+  mimeType            String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  owner               User     @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
+
+  @@index([ownerUserId])
+  @@index([publicId, ownerUserId])
+}
+
+model Job {
+  id             String   @id
+  ownerCompanyId String
+  companyName    String
+  title          String
+  location       String
+  modality       String
+  salary         String?
+  description    String
+  tagsJson       String?
+  status         String
+  featured       Boolean  @default(false)
+  createdAt      DateTime
+  updatedAt      DateTime
+  owner          User     @relation(fields: [ownerCompanyId], references: [id], onDelete: Cascade)
+
+  @@index([ownerCompanyId])
+}
+
+model MarketplaceVacancy {
+  id          String   @id
+  vacancyJson String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Application {
+  id            String         @id
+  candidateId   String
+  candidateName String
+  jobId         String
+  title         String
+  companyName   String
+  location      String
+  modality      String
+  salary        String?
+  status        String
+  appliedAt     DateTime
+  lastUpdatedAt DateTime
+  fitLabel      String
+  candidate     User           @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  notifications Notification[]
+
+  @@index([candidateId])
+  @@index([jobId])
+}
+
+model Notification {
+  id            String       @id
+  userId        String
+  type          String
+  title         String
+  message       String
+  createdAt     DateTime
+  read          Boolean      @default(false)
+  applicationId String?
+  jobId         String?
+  status        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application   Application? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([applicationId])
+}
+
+model NotificationInboxItem {
+  id           String   @id
+  userId       String
+  type         String
+  category     String
+  source       String
+  title        String
+  message      String
+  linkHref     String?
+  actionLabel  String?
+  applicationId String?
+  jobId        String?
+  entityId     String?
+  status       String?
+  metadataJson String?
+  deliveredAt  DateTime @default(now())
+  lastSeenAt   DateTime @default(now())
+  read         Boolean  @default(false)
+  readAt       DateTime?
+  hidden       Boolean  @default(false)
+  hiddenAt     DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, hidden, deliveredAt])
+  @@index([userId, read, deliveredAt])
+}
+
+model SavedVacancy {
+  userId String
+  jobId  String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, jobId])
+}
+
+model Preference {
+  userId                          String  @id
+  notificationAnuncio             Boolean @default(true)
+  notificationApplication         Boolean @default(true)
+  notificationEmailEnabled        Boolean @default(true)
+  notificationPushEnabled         Boolean @default(false)
+  notificationEmailFrequency      String?
+  notificationEmailTypesJson      String?
+  theme                           String?
+  language                        String?
+  readNotificationIdsJson         String?
+  hiddenNotificationIdsJson       String?
+  companyFavoriteCandidateIdsJson String?
+  companyApplicantNotesJson       String?
+  companyDashboardConfigJson      String?
+  billingHistoryJson              String?
+  user                            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CandidateSkill {
+  id               String    @id @default(cuid())
+  userId           String
+  skillName        String
+  canonicalSkill   String?
+  skillCategory    String?
+  skillLevel       String?
+  yearsExperience  Int?
+  experienceMonths Int?
+  lastUsedAt       DateTime?
+  isCoreSkill      Boolean   @default(false)
+  evidenceSource   String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, updatedAt])
+}
+
+model CandidateExperience {
+  id               String   @id @default(cuid())
+  userId           String
+  rol              String
+  empresa          String
+  empresaNit       String?
+  tiempo           String
+  startDate        String?
+  endDate          String?
+  current          Boolean?
+  durationMonths   Int?
+  opinion          String?
+  description      String?
+  canonicalRole    String?
+  roleFamily       String?
+  companyIndustry  String?
+  employmentType   String?
+  location         String?
+  workMode         String?
+  achievements     String?
+  skillsUsed       String[]
+  domainTags       String[]
+  functionalTags   String[]
+  teamScope        String?
+  peopleLedCount   Int?
+  productsWorkedOn String[]
+  sortOrder        Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, sortOrder])
+}
+
+model NotificationEmailType {
+  userId    String
+  emailType String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, emailType])
+}
+
+model UserReadNotification {
+  userId         String
+  notificationId String
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, notificationId])
+  @@index([userId, createdAt])
+}
+
+model UserHiddenNotification {
+  userId         String
+  notificationId String
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, notificationId])
+  @@index([userId, createdAt])
+}
+
+model CompanyFavoriteCandidate {
+  companyUserId String
+  candidateId   String
+  createdAt     DateTime @default(now())
+  company       User     @relation("CompanyFavorites", fields: [companyUserId], references: [id], onDelete: Cascade)
+  candidate     User     @relation("CandidateFavorites", fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@id([companyUserId, candidateId])
+  @@index([candidateId, createdAt])
+}
+
+model CompanyApplicantNote {
+  id            String   @id @default(cuid())
+  companyUserId String
+  applicantId   String
+  note          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  company       User     @relation("CompanyApplicantNotes", fields: [companyUserId], references: [id], onDelete: Cascade)
+
+  @@unique([companyUserId, applicantId])
+  @@index([companyUserId, updatedAt])
+}
+
+model CompanyDashboardPreference {
+  id            String   @id @default(cuid())
+  companyUserId String
+  key           String
+  valueJson     String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  company       User     @relation(fields: [companyUserId], references: [id], onDelete: Cascade)
+
+  @@unique([companyUserId, key])
+  @@index([companyUserId, updatedAt])
+}
+
+model BillingHistoryEntry {
+  id                String    @id @default(cuid())
+  userId            String
+  plan              String
+  amountCop         Int
+  status            String
+  paidAt            DateTime
+  renewalAt         DateTime?
+  description       String
+  provider          String?
+  providerReference String?
+  createdAt         DateTime  @default(now())
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, paidAt])
+  @@index([userId, status, createdAt])
+}
+
+model PurchaseHistory {
+  id                 String   @id @default(cuid())
+  userId             String
+  role               String
+  kind               String
+  planId             String
+  amountCop          Int
+  applicationCredits Int?
+  boostUnitsJson     String?
+  metadataJson       String?
+  startedAt          DateTime
+  endsAt             DateTime?
+  createdAt          DateTime @default(now())
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, kind, createdAt])
+  @@index([userId, planId, createdAt])
+  @@index([role, kind, createdAt])
+}
+
+model Comment {
+  id         String   @id
+  userId     String
+  entityType String
+  entityId   String
+  authorName String
+  body       String
+  stars      Int?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([entityType, entityId, createdAt])
+}
+
+model CategoryInterest {
+  id       Int    @id @default(autoincrement())
+  userId   String
+  category String
+  clicks   Int    @default(0)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+  @@index([userId])
+}
+
+model ActivationMilestone {
+  id          String    @id
+  userId      String
+  key         String
+  status      String
+  score       Int       @default(0)
+  detailsJson String?
+  completedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, key])
+  @@index([userId, status])
+}
+
+model MatchingFeedback {
+  id          String   @id
+  companyId   String?
+  candidateId String?
+  jobId       String
+  stage       String
+  outcome     String
+  scoreDelta  Int      @default(0)
+  contextJson String?
+  createdAt   DateTime @default(now())
+  company     User?    @relation("MatchingFeedbackCompany", fields: [companyId], references: [id], onDelete: SetNull)
+  candidate   User?    @relation("MatchingFeedbackCandidate", fields: [candidateId], references: [id], onDelete: SetNull)
+
+  @@index([companyId, createdAt])
+  @@index([candidateId, createdAt])
+  @@index([jobId, createdAt])
+}
+
+model MatchingCalibration {
+  id            String   @id
+  companyId     String
+  key           String
+  weight        Int
+  minWeight     Int
+  maxWeight     Int
+  sampleCount   Int      @default(0)
+  acceptedCount Int      @default(0)
+  rejectedCount Int      @default(0)
+  lastDelta     Int      @default(0)
+  updatedAt     DateTime @updatedAt
+  company       User     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, key])
+  @@index([companyId, updatedAt])
+}
+
+model MatchingCalibrationHistory {
+  id             String   @id
+  companyId      String?
+  key            String
+  previousWeight Int
+  nextWeight     Int
+  delta          Int
+  sampleCount    Int
+  acceptedCount  Int
+  rejectedCount  Int
+  reason         String?
+  createdAt      DateTime @default(now())
+  company        User?    @relation(fields: [companyId], references: [id], onDelete: SetNull)
+
+  @@index([companyId, createdAt])
+  @@index([companyId, key, createdAt])
+}
+
+model BillingCheckoutSession {
+  id                String    @id
+  companyUserId     String?
+  plan              String
+  method            String
+  provider          String
+  status            String
+  providerSessionId String    @unique
+  checkoutUrl       String?
+  customerId        String?
+  subscriptionId    String?
+  periodEnd         DateTime?
+  confirmedAt       DateTime?
+  rawPayloadJson    String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              User?     @relation(fields: [companyUserId], references: [id], onDelete: SetNull)
+
+  @@index([companyUserId, status, createdAt])
+}
+
+model VerificationRequest {
+  id           String    @id
+  userId       String?
+  role         String
+  status       String
+  notes        String?
+  evidenceJson String?
+  submittedAt  DateTime  @default(now())
+  reviewedAt   DateTime?
+  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId, status])
+}
+
+model RetentionTask {
+  id                String    @id
+  userId            String?
+  role              String
+  kind              String
+  channel           String
+  status            String
+  dedupeKey         String?
+  payloadJson       String?
+  scheduledAt       DateTime
+  sentAt            DateTime?
+  providerMessageId String?
+  retries           Int       @default(0)
+  lastError         String?
+  createdAt         DateTime  @default(now())
+  user              User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, dedupeKey])
+  @@index([userId, status, scheduledAt])
+  @@index([kind, status, scheduledAt])
+  @@index([channel, status, scheduledAt])
+}

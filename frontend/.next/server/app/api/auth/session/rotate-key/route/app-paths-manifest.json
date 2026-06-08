@@ -1,0 +1,3 @@
+{
+  "/api/auth/session/rotate-key/route": "app/api/auth/session/rotate-key/route.js"
+}

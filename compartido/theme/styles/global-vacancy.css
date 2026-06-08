@@ -1,0 +1,405 @@
+.vacancies-shell {
+  position: relative;
+  isolation: isolate;
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(71, 214, 255, 0.08), transparent 22%),
+    radial-gradient(circle at 84% 16%, rgba(14, 165, 233, 0.08), transparent 18%),
+    radial-gradient(circle at 50% 70%, rgba(45, 212, 191, 0.04), transparent 26%),
+    linear-gradient(180deg, #030713 0%, #071224 46%, #050816 100%);
+}
+
+.vacancies-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.025;
+  mix-blend-mode: soft-light;
+}
+
+.vacancies-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.13) 0.6px, transparent 0.7px);
+  background-size: 22px 22px;
+  opacity: 0.03;
+}
+
+.vacancies-shell-light {
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(56, 189, 248, 0.10), transparent 22%),
+    radial-gradient(circle at 84% 16%, rgba(14, 165, 233, 0.10), transparent 18%),
+    radial-gradient(circle at 50% 70%, rgba(45, 212, 191, 0.06), transparent 26%),
+    linear-gradient(180deg, #f3fafb 0%, #e9f3f6 46%, #e1edf2 100%);
+}
+
+.vacancies-shell-light::before {
+  opacity: 0.018;
+}
+
+.vacancies-shell-light::after {
+  opacity: 0.015;
+}
+
+@keyframes company-menu-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.company-menu-sheet {
+  width: min(280px, calc(100vw - 2rem));
+  animation: company-menu-slide-in 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vacancy-search-shell {
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(8, 18, 35, 0.85), rgba(8, 17, 32, 0.75));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(34, 211, 238, 0.03),
+    0 20px 48px rgba(0, 0, 0, 0.24);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.vacancy-search-shell:focus-within {
+  border-color: rgba(125, 211, 252, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 0 1px rgba(34, 211, 238, 0.06),
+    0 0 32px rgba(34, 211, 238, 0.12),
+    0 24px 50px rgba(0, 0, 0, 0.28);
+}
+
+.vacancy-select {
+  width: 100%;
+  appearance: none;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c8f6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 1rem center, 0 0;
+  background-size: 14px 14px, 100% 100%;
+  color: #eff7ff;
+  padding: 0.9rem 3rem 0.9rem 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vacancy-select:focus {
+  border-color: rgba(125, 211, 252, 0.3);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.06), 0 0 24px rgba(34, 211, 238, 0.1);
+}
+
+.vacancy-select option {
+  background: #0a1424;
+  color: #eff7ff;
+}
+
+.vacancy-card {
+  border-top-color: rgba(252, 209, 22, 0.32);
+  border-right-color: rgba(14, 165, 233, 0.28);
+  border-bottom-color: rgba(206, 17, 38, 0.22);
+  border-left-color: rgba(45, 212, 191, 0.24);
+  background:
+    linear-gradient(180deg, rgba(9, 17, 32, 0.94), rgba(8, 15, 29, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(125, 211, 252, 0.04),
+    0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.vacancy-card:hover {
+  border-color: rgba(125, 211, 252, 0.24);
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(125, 211, 252, 0.06),
+    0 0 0 1px rgba(34, 211, 238, 0.04),
+    0 24px 54px rgba(8, 145, 178, 0.12),
+    0 28px 72px rgba(0, 0, 0, 0.32);
+}
+
+.vacancy-card-featured {
+  background:
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(10, 19, 35, 0.97), rgba(8, 15, 28, 0.94));
+}
+
+.vacancies-shell-light .vacancy-search-shell {
+  border-color: rgba(125, 211, 252, 0.32);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 252, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 10px 24px rgba(148, 163, 184, 0.10);
+}
+
+.vacancies-shell-light .vacancy-search-shell input {
+  color: #0f172a;
+}
+
+.vacancies-shell-light .vacancy-search-shell input::placeholder {
+  color: rgba(71, 85, 105, 0.72);
+}
+
+.vacancies-shell-light .vacancy-select {
+  border-color: rgba(203, 213, 225, 0.9);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+  color: #0f172a;
+  box-shadow: 0 10px 22px rgba(148, 163, 184, 0.08);
+}
+
+.vacancies-shell-light .vacancy-select option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.vacancies-shell-light .vacancy-card {
+  border-top-color: rgba(245, 158, 11, 0.34);
+  border-right-color: rgba(14, 165, 233, 0.30);
+  border-bottom-color: rgba(220, 38, 38, 0.24);
+  border-left-color: rgba(45, 212, 191, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 252, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 20px 50px rgba(148, 163, 184, 0.14);
+}
+
+.vacancies-shell-light .vacancy-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 1px rgba(56, 189, 248, 0.06),
+    0 22px 48px rgba(56, 189, 248, 0.10),
+    0 22px 60px rgba(148, 163, 184, 0.16);
+}
+
+.vacancies-shell-light .vacancy-card h3 {
+  color: #0f172a;
+}
+
+.vacancies-shell-light .vacancy-card p,
+.vacancies-shell-light .vacancy-card span,
+.vacancies-shell-light .vacancy-card button {
+  color: #0f172a;
+}
+
+.vacancies-shell-light .vacancy-card svg {
+  color: #0369a1;
+}
+
+.vacancies-shell-light .vacancy-card .text-slate-300,
+.vacancies-shell-light .vacancy-card .text-slate-400 {
+  color: #334155 !important;
+}
+
+.vacancies-shell-light .vacancy-card .text-cyan-100,
+.vacancies-shell-light .vacancy-card .text-cyan-100\/80 {
+  color: #0f172a !important;
+}
+
+.vacancies-shell-light .vacancy-card .text-sky-300 {
+  color: #0369a1 !important;
+}
+
+.vacancies-shell-light .vacancy-card .text-red-200 {
+  color: #b91c1c !important;
+}
+
+.vacancies-shell-light .vacancy-card .border-cyan-300\/14,
+.vacancies-shell-light .vacancy-card .border-cyan-300\/20,
+.vacancies-shell-light .vacancy-card .border-white\/10,
+.vacancies-shell-light .vacancy-card .border-white\/8 {
+  border-color: rgba(148, 163, 184, 0.38) !important;
+}
+
+.vacancies-shell-light .vacancy-card .bg-white\/4,
+.vacancies-shell-light .vacancy-card .bg-white\/5,
+.vacancies-shell-light .vacancy-card .bg-cyan-300\/8,
+.vacancies-shell-light .vacancy-card .bg-cyan-300\/10 {
+  background: rgba(255, 255, 255, 0.88) !important;
+}
+
+.vacancies-shell-light .vacancy-card .text-\[\#fde68a\] {
+  color: #b45309 !important;
+}
+
+.vacancies-shell-light .vacancy-card .border-\[\#fcd116\]\/16,
+.vacancies-shell-light .vacancy-card .border-\[\#fcd116\]\/28 {
+  border-color: rgba(245, 158, 11, 0.28) !important;
+}
+
+.vacancies-shell-light .vacancy-card .bg-\[\#fcd116\]\/8,
+.vacancies-shell-light .vacancy-card .bg-\[\#fcd116\]\/12 {
+  background: rgba(245, 158, 11, 0.12) !important;
+}
+
+.vacancies-shell-light .vacancy-card .job-card-detail-cta {
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(232, 121, 249, 0.94),
+      rgba(167, 139, 250, 0.98),
+      rgba(125, 211, 252, 1)
+    ) padding-box,
+    linear-gradient(
+      90deg,
+      rgba(168, 85, 247, 0.64),
+      rgba(96, 165, 250, 0.64)
+    ) border-box !important;
+  color: rgba(255, 255, 255, 0.96) !important;
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.18), 0 0 12px rgba(196, 181, 253, 0.12);
+  box-shadow: 0 16px 28px rgba(129, 140, 248, 0.18) !important;
+}
+
+.vacancies-shell-light .vacancy-card .job-card-detail-cta,
+.vacancies-shell-light .vacancy-card .job-card-detail-cta .job-card-detail-text {
+  color: rgba(255, 255, 255, 1) !important;
+  text-shadow:
+    0 0 12px rgba(196, 181, 253, 0.28),
+    0 0 10px rgba(147, 197, 253, 0.24),
+    0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.vacancies-shell-light .vacancy-card .job-card-detail-cta .job-card-detail-arrow {
+  color: #020617 !important;
+  filter: drop-shadow(0 0 1px rgba(226, 232, 240, 0.95))
+    drop-shadow(0 0 2px rgba(226, 232, 240, 0.8));
+}
+
+.filter-badge {
+  border-radius: 9999px;
+  border-width: 1px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.filter-badge-gold {
+  border-color: rgba(252, 209, 22, 0.34) !important;
+  background-color: rgba(252, 209, 22, 0.16) !important;
+  color: #fff59d !important;
+}
+
+.filter-badge-blue {
+  border-color: rgba(125, 211, 252, 0.42) !important;
+  background-color: rgba(56, 189, 248, 0.18) !important;
+  color: #e0f2fe !important;
+}
+
+.vacancies-shell-light .filter-badge-gold {
+  border-color: rgba(217, 119, 6, 0.42) !important;
+  background-color: rgba(252, 211, 77, 0.28) !important;
+  color: #78350f !important;
+}
+
+.vacancies-shell-light .filter-badge-blue {
+  border-color: rgba(2, 132, 199, 0.34) !important;
+  background-color: rgba(125, 211, 252, 0.32) !important;
+  color: #0c4a6e !important;
+}
+
+.vacancy-range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 1.25rem;
+  background: transparent;
+}
+
+.vacancy-range:focus {
+  outline: none;
+}
+
+.vacancy-range::-webkit-slider-runnable-track {
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.28);
+}
+
+.vacancy-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3rem;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 9999px;
+  background: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.16);
+}
+
+.vacancy-range::-moz-range-track {
+  height: 0.4rem;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.28);
+}
+
+.vacancy-range::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 9999px;
+  background: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.16);
+}
+
+.vacancy-range-gold::-webkit-slider-thumb {
+  background: #fcd116;
+  box-shadow: 0 0 0 4px rgba(252, 209, 22, 0.18);
+}
+
+.vacancy-range-gold::-moz-range-thumb {
+  background: #fcd116;
+  box-shadow: 0 0 0 4px rgba(252, 209, 22, 0.18);
+}
+
+.vacancy-range-blue::-webkit-slider-thumb {
+  background: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18);
+}
+
+.vacancy-range-blue::-moz-range-thumb {
+  background: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18);
+}
+
+.vacancies-shell-light .vacancy-card .job-card-save-icon {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #0f172a !important;
+  border-color: rgba(148, 163, 184, 0.52) !important;
+}
+
+.vacancies-shell-light .vacancy-card button[aria-label*="Guardar"] {
+  color: #0f172a !important;
+}
+
+.vacancies-shell-light .vacancy-card .border-\[\#fcd116\]\/32 {
+  border-color: rgba(245, 158, 11, 0.34) !important;
+}
+
+.vacancies-shell-light .vacancy-card .bg-\[\#fcd116\]\/16 {
+  background: rgba(253, 224, 71, 0.34) !important;
+}

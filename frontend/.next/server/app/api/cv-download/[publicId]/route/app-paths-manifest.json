@@ -1,0 +1,3 @@
+{
+  "/api/cv-download/[publicId]/route": "app/api/cv-download/[publicId]/route.js"
+}

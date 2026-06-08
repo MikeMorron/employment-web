@@ -1,0 +1,10 @@
+{
+  "/api/events/route": "app/api/events/route.js",
+  "/api/admin/console/route": "app/api/admin/console/route.js",
+  "/api/auth/refresh/route": "app/api/auth/refresh/route.js",
+  "/candidatos/page": "app/candidatos/page.js",
+  "/admin/usuarios/page": "app/admin/usuarios/page.js",
+  "/admin/vacantes/page": "app/admin/vacantes/page.js",
+  "/admin/errors/page": "app/admin/errors/page.js",
+  "/admin/settings/page": "app/admin/settings/page.js"
+}

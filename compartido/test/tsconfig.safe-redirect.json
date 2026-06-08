@@ -1,0 +1,17 @@
+{
+  "extends": "../../frontend/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "/tmp/jobwebpage-safe-redirect-test",
+    "rootDir": "../..",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "declaration": false,
+    "sourceMap": false,
+    "incremental": false
+  },
+  "include": [
+    "./safe-redirect.test.ts"
+  ]
+}

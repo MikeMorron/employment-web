@@ -1,0 +1,41 @@
+{
+  "extends": "../../frontend/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "/tmp/jobwebpage-matching-tests",
+    "rootDir": "../..",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "declaration": false,
+    "sourceMap": false,
+    "incremental": false
+  },
+  "include": [
+    "./matching-engine.test.ts",
+    "./user-client-sanitization.test.ts",
+    "./demo-seed-policy.test.ts",
+    "./profile-patch-sanitization.test.ts",
+    "./profanity-guard.test.ts",
+    "./comment-sanitize.test.ts",
+    "./auth-validation.test.ts",
+    "./password-security.test.ts",
+    "./candidate-plan-state.test.ts",
+    "./db-errors.test.ts",
+    "./app-runtime.test.ts",
+    "./catalog-and-translation.test.ts",
+    "./dashboard-config-utils.test.ts",
+    "./market-panorama-helpers.test.ts",
+    "./candidate-match-profile-utils.test.ts",
+    "./notification-read-state.test.ts",
+    "./notification-state.test.ts",
+    "./opaque-id.test.ts",
+    "./product-notification-policy.test.ts",
+    "./chat-state.test.ts",
+    "./vacancy-badges.test.ts",
+    "./vacancy-category.test.ts",
+    "./company-candidate-vacancy-feed.test.ts",
+    "./retention-email-template.test.ts",
+    "./vacancy-filter.test.ts"
+  ]
+}

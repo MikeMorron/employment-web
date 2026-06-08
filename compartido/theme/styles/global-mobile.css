@@ -1,0 +1,11 @@
+@media (min-width: 640px) {
+  .vacancy-card-meta-pill {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-widget-body {
+    overflow: visible;
+  }
+}

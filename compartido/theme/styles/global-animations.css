@@ -1,0 +1,361 @@
+@keyframes editorial-carousel {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes profile-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(5px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes welcome-overlay-fade {
+  0% {
+    opacity: 0;
+  }
+
+  10%,
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes welcome-brand-fade {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  32%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes welcome-step-1 {
+  0%,
+  4% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  10%,
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  33%,
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes welcome-step-2 {
+  0%,
+  26% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  34%,
+  48% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  56%,
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes welcome-step-3 {
+  0%,
+  49% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  57%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes welcome-loader-bar {
+  0% {
+    transform: scaleX(0.12);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scaleX(0.72);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes welcome-loader-dot {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes loader-brand-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-brand-spin {
+  animation: loader-brand-spin 2.8s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes welcome-primary-fade {
+  0%,
+  84% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes optimization-card-swap {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes welcome-bridge-message {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  20%,
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.welcome-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(1, 7, 18, 0.86), rgba(3, 8, 18, 0.95));
+  backdrop-filter: blur(10px);
+}
+
+.welcome-overlay__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 50rem);
+  text-align: center;
+}
+
+.welcome-overlay__primary {
+  animation: welcome-primary-fade 5s ease forwards;
+}
+
+.welcome-overlay__bridge {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: #f8fafc;
+  font-size: clamp(1.05rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: 0 12px 24px rgba(255, 255, 255, 0.14);
+  animation: welcome-bridge-message 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.welcome-flag {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 12.25rem);
+  height: 6.9rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 24px 90px rgba(0, 0, 0, 0.32);
+  opacity: 1;
+}
+
+.welcome-flag__video {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.welcome-brand-name {
+  position: relative;
+  margin-top: 1.35rem;
+  min-height: 3.2rem;
+  color: #f8fafc;
+  font-size: clamp(1.04rem, 2.72vw, 1.76rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-shadow: 0 8px 22px rgba(255, 255, 255, 0.16);
+  opacity: 0.75;
+}
+
+.welcome-brand-step {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.welcome-brand-step--1 {
+  animation: welcome-step-1 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.welcome-brand-step--2 {
+  animation: welcome-step-2 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.welcome-brand-step--3 {
+  animation: welcome-step-3 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.welcome-loader {
+  position: relative;
+  margin: 1.15rem auto 0;
+  width: min(100%, 14rem);
+  padding-top: 1rem;
+}
+
+.welcome-loader__bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  transform-origin: left center;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(71, 214, 255, 0.18), rgba(71, 214, 255, 0.95), rgba(246, 196, 83, 0.78));
+  box-shadow: 0 0 14px rgba(71, 214, 255, 0.28);
+  animation: welcome-loader-bar 5s ease forwards;
+}
+
+.welcome-loader__dot {
+  position: absolute;
+  top: 0;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background: #9be9ff;
+  box-shadow: 0 0 10px rgba(71, 214, 255, 0.42);
+  animation: welcome-loader-dot 0.8s ease-in-out infinite;
+}
+
+.welcome-loader__dot--1 {
+  left: calc(50% - 1rem);
+}
+
+.welcome-loader__dot--2 {
+  left: calc(50% - 0.25rem);
+  animation-delay: 0.14s;
+}
+
+.welcome-loader__dot--3 {
+  left: calc(50% + 0.5rem);
+  animation-delay: 0.28s;
+}
+
+@keyframes commentModalEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

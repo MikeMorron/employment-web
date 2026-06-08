@@ -1,0 +1,63 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/app/*": [
+        "./app/*",
+        "./usuario/app/*",
+        "./empresa/app/*"
+      ],
+      "@/components/*": [
+        "../compartido/components/*",
+        "./usuario/components/*",
+        "./empresa/components/*"
+      ],
+      "@/hooks/*": [
+        "../compartido/hooks/*",
+        "./usuario/hooks/*",
+        "./empresa/hooks/*"
+      ],
+      "@/lib/server/*": [
+        "../backend/compartido/lib-server/*",
+        "../backend/usuario/lib-server/*",
+        "../backend/empresa/lib-server/*"
+      ],
+      "@/lib/*": [
+        "../compartido/lib/*",
+        "./usuario/lib/*",
+        "./empresa/lib/*"
+      ],
+      "@/features/*": ["../compartido/features/*"],
+      "@/data/*": ["../compartido/data/*"],
+      "@/theme/*": ["../compartido/theme/*"],
+      "@/types/*": ["../compartido/types/*"],
+      "@/messages/*": ["../compartido/locales/messages/*"],
+      "@/frontend/*": ["./*"],
+      "@/backend/*": ["../backend/*"],
+      "@/compartido/*": ["../compartido/*"],
+      "@/*": ["../*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "usuario/**/*.ts",
+    "usuario/**/*.tsx",
+    "empresa/**/*.ts",
+    "empresa/**/*.tsx",
+    "../backend/**/*.ts",
+    "../backend/**/*.tsx",
+    "../compartido/**/*.ts",
+    "../compartido/**/*.tsx",
+    "proxy.ts",
+    ".next/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}

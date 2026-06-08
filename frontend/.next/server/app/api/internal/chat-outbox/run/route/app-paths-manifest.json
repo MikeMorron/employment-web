@@ -1,0 +1,3 @@
+{
+  "/api/internal/chat-outbox/run/route": "app/api/internal/chat-outbox/run/route.js"
+}

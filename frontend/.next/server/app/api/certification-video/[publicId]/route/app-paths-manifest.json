@@ -1,0 +1,3 @@
+{
+  "/api/certification-video/[publicId]/route": "app/api/certification-video/[publicId]/route.js"
+}

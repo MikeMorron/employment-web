@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "../compartido/theme/styles/global-base.css";
+@import "../compartido/theme/styles/global-animations.css";
+@import "../compartido/theme/styles/global-vacancy.css";
+@import "../compartido/theme/styles/global-mobile.css";
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.ts-action-primary,
+.ts-action-secondary,
+.ts-icon-button,
+[role="button"] {
+  transition:
+    filter 160ms ease,
+    opacity 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+button:not(:disabled),
+input[type="button"]:not(:disabled),
+input[type="submit"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+.ts-action-primary,
+.ts-action-secondary,
+.ts-icon-button,
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+button:not(:disabled):hover,
+input[type="button"]:not(:disabled):hover,
+input[type="submit"]:not(:disabled):hover,
+input[type="reset"]:not(:disabled):hover,
+.ts-action-primary:hover,
+.ts-action-secondary:hover,
+.ts-icon-button:hover,
+[role="button"]:not([aria-disabled="true"]):hover {
+  filter: brightness(0.96);
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}

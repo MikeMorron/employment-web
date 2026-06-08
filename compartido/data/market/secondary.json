@@ -1,0 +1,171 @@
+{
+  "updatedAt": "2026-03-24T15:39:58.306Z",
+  "vacancies": {
+    "activeCount": 25000,
+    "activeCountSeries": [
+      { "label": "2020", "value": 120000 },
+      { "label": "2021", "value": 250000 },
+      { "label": "2022", "value": 400000 },
+      { "label": "2023", "value": 370000 },
+      { "label": "2024", "value": 320000 },
+      { "label": "2025", "value": 300000 }
+    ],
+    "topOccupations": [
+      { "label": "Servicio al cliente / call center", "value": 100 },
+      { "label": "Ventas y asesores comerciales", "value": 95 },
+      { "label": "Auxiliares administrativos y de oficina", "value": 91 },
+      { "label": "Operarios y producción", "value": 88 },
+      { "label": "Logistica", "value": 84 },
+      { "label": "Construccion", "value": 80 },
+      { "label": "Salud", "value": 76 },
+      { "label": "Contabilidad y finanzas", "value": 72 },
+      { "label": "Tecnologia", "value": 68 },
+      { "label": "Marketing digital y comercio electronico", "value": 64 },
+      { "label": "Seguridad (vigilantes, guardas)", "value": 60 },
+      { "label": "Educación (docentes, formación técnica)", "value": 56 }
+    ],
+    "topSkills": [
+      { "label": "Comunicación efectiva", "value": 100 },
+      { "label": "Trabajo en equipo", "value": 96 },
+      { "label": "Responsabilidad y puntualidad", "value": 93 },
+      { "label": "Adaptabilidad", "value": 90 },
+      { "label": "Orientación al cliente", "value": 88 },
+      { "label": "Excel y herramientas Office", "value": 86 },
+      { "label": "Atención al cliente / CRM", "value": 83 },
+      { "label": "Ventas y negociación", "value": 80 },
+      { "label": "Logística e inventarios", "value": 77 },
+      { "label": "Programación y soporte TI", "value": 74 },
+      { "label": "Manejo de maquinaria o equipos", "value": 71 },
+      { "label": "Procesos de producción", "value": 68 },
+      { "label": "Conducción (licencias específicas)", "value": 65 },
+      { "label": "Manipulación de alimentos", "value": 62 }
+    ],
+    "topSectors": [
+      { "label": "2020", "value": 100 },
+      { "label": "2021", "value": 100 },
+      { "label": "2022", "value": 100 },
+      { "label": "2023", "value": 100 },
+      { "label": "2024", "value": 100 },
+      { "label": "2025", "value": 100 },
+      { "label": "2026", "value": 100 }
+    ],
+    "topCompanies": [
+      { "label": "2020", "value": 100 },
+      { "label": "2021", "value": 100 },
+      { "label": "2022", "value": 100 },
+      { "label": "2023", "value": 100 },
+      { "label": "2024", "value": 100 },
+      { "label": "2025", "value": 100 },
+      { "label": "2026", "value": 100 }
+    ],
+    "avgSalary": 2000000,
+    "avgSalarySeries": [
+      { "label": "2020", "value": 700000 },
+      { "label": "2021", "value": 1000000 },
+      { "label": "2022", "value": 1400000 },
+      { "label": "2023", "value": 1600000 },
+      { "label": "2024", "value": 1800000 },
+      { "label": "2025", "value": 1900000 },
+      { "label": "2026", "value": 2000000 }
+    ],
+    "realSalaryVsInflationSeries": [
+      { "label": "2020", "value": 1.9 },
+      { "label": "2021", "value": 4.4 },
+      { "label": "2022", "value": 2.9 },
+      { "label": "2023", "value": 2.8 },
+      { "label": "2024", "value": 4.3 },
+      { "label": "2025", "value": 17.0 }
+    ],
+    "salaryVacancyBands": [
+      { "label": "De 1M a 2M", "value": 35.6 },
+      { "label": "De 2M a 3M", "value": 56.8 },
+      { "label": "De 3M a 4M", "value": 3.7 },
+      { "label": "De 4M a 5M", "value": 2.7 },
+      { "label": "Mas de 5M", "value": 1.2 }
+    ],
+    "medianSalary": 3000000,
+    "medianSalarySeries": [
+      { "label": "2020", "value": 2000000 },
+      { "label": "2021", "value": 2200000 },
+      { "label": "2022", "value": 2400000 },
+      { "label": "2023", "value": 2600000 },
+      { "label": "2024", "value": 2800000 },
+      { "label": "2025", "value": 3000000 }
+    ],
+    "salaryRange": {
+      "min": 1300000,
+      "max": 20000000
+    },
+    "minimumSalarySeries": [
+      { "label": "2020", "value": 877803 },
+      { "label": "2021", "value": 908526 },
+      { "label": "2022", "value": 1000000 },
+      { "label": "2023", "value": 1160000 },
+      { "label": "2024", "value": 1300000 },
+      { "label": "2025", "value": 1423500 },
+      { "label": "2026", "value": 1750905 }
+    ],
+    "salaryBySector": [
+      { "label": "Tecnología (TIC)", "value": 6000000 },
+      { "label": "Financiero", "value": 4500000 },
+      { "label": "Energía / minería", "value": 5000000 },
+      { "label": "Industria / manufactura", "value": 2500000 },
+      { "label": "Construcción", "value": 2200000 },
+      { "label": "Salud", "value": 3000000 },
+      { "label": "Comercio", "value": 1600000 },
+      { "label": "Servicios", "value": 1500000 },
+      { "label": "Logística", "value": 1800000 }
+    ],
+    "salaryBySeniority": [
+      { "label": "Junior (0-2 años)", "value": 2000000 },
+      { "label": "Semi-senior (2-5 años)", "value": 4000000 },
+      { "label": "Senior (5+ años)", "value": 8000000 },
+      { "label": "Directivos / expertos", "value": 20000000 }
+    ],
+    "avgExperienceYears": 1.5,
+    "experienceDistribution": [
+      { "label": "2020", "value": 0.5 },
+      { "label": "2021", "value": 0.8 },
+      { "label": "2022", "value": 1.0 },
+      { "label": "2023", "value": 1.1 },
+      { "label": "2024", "value": 1.5 },
+      { "label": "2025", "value": 0.5 },
+      { "label": "2026", "value": 1.5 }
+    ],
+    "educationLevels": [
+      { "label": "Técnico", "value": 20 },
+      { "label": "Tecnólogo", "value": 25 },
+      { "label": "Profesional", "value": 35 },
+      { "label": "Posgrado", "value": 20 }
+    ],
+    "workModes": [
+      { "label": "Remoto", "value": 5 },
+      { "label": "Híbrido", "value": 15 },
+      { "label": "Presencial", "value": 80 }
+    ],
+    "topTools": [
+      { "label": "AWS / Cloud", "value": 100 },
+      { "label": "Kubernetes", "value": 90 },
+      { "label": "Docker", "value": 85 },
+      { "label": "Terraform", "value": 75 }
+    ],
+    "laborConditionsTimeline": [
+      { "label": "2020", "value": 100 },
+      { "label": "2021", "value": 100 },
+      { "label": "2022", "value": 100 },
+      { "label": "2023", "value": 100 },
+      { "label": "2024", "value": 100 },
+      { "label": "2025", "value": 100 },
+      { "label": "2026", "value": 100 }
+    ],
+    "educationDemandTimeline": [
+      { "label": "2020", "value": 100 },
+      { "label": "2021", "value": 100 },
+      { "label": "2022", "value": 100 },
+      { "label": "2023", "value": 100 },
+      { "label": "2024", "value": 100 },
+      { "label": "2025", "value": 100 },
+      { "label": "2026", "value": 100 }
+    ]
+  }
+}

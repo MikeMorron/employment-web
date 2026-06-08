@@ -1,0 +1,150 @@
+import type { CandidateProfile, CompanyProfile } from "@/types/profile";
+import type { UserJobFit } from "@/types/user";
+import { createLanguageProficiency } from "@/lib/profile-form";
+
+export const demoCandidateUser: CandidateProfile = {
+  id: "candidate-demo-20260401",
+  role: "candidate",
+  plan: "boosted",
+  displayName: "Camila Duarte",
+  nombre: "Camila Duarte",
+  rol: "Senior Product Designer",
+  ubicacion: "Medellin, Colombia",
+  email: "talentoco.usuario@gmail.com",
+  tipoRegistro: "persona",
+  modalidadTrabajo: "Hibrido",
+  expectativaSalarial: "7800000",
+  expectativaSalarialMin: "5500000",
+  expectativaSalarialMax: "8200000",
+  jornada: "Tiempo completo",
+  resumenPerfil:
+    "Diseñadora de producto con experiencia liderando sistemas de diseño, discovery y flujos de conversión para plataformas B2B y marketplaces. Ha trabajado junto a equipos de producto, growth e ingeniería optimizando journeys complejos y experiencias móviles.",
+  categoriasEnfoque: ["Producto", "UX/UI", "Diseño de sistemas"],
+  telefono: "3105550184",
+  website: "https://ninaadelard.design",
+  avatar: "",
+  avatarStoredFileName: "",
+  cv: "",
+  bio: "Diseñadora de producto con experiencia en research, design systems, journeys de conversión y colaboración cercana con producto e ingeniería.",
+  idiomas: [
+    createLanguageProficiency("Español", "Nativo"),
+    createLanguageProficiency("Inglés", "C1"),
+    createLanguageProficiency("Portugués", "B2"),
+  ],
+  disponibilidadViaje: "Si",
+  movilidad: "Moto",
+  profileVisibility: "recruiters_only",
+  skills: [
+    "Product Design",
+    "UX Research",
+    "Design Systems",
+    "Figma",
+    "Prototyping",
+    "Journey Mapping",
+    "Product Discovery",
+    "Experimentation",
+  ],
+  experiencia: [
+    {
+      rol: "Senior Product Designer",
+      empresa: "Flowbit Labs",
+      empresaNit: "9013001123",
+      fechaInicio: "2022-02",
+      actualidad: true,
+      tiempo: "2022 - Actualidad",
+      opinion: "Lidero discovery, experimentación y evolución del sistema de diseño para productos SaaS B2B.",
+    },
+    {
+      rol: "Product Designer",
+      empresa: "Mercado Nativo",
+      empresaNit: "9013001188",
+      fechaInicio: "2019-06",
+      fechaFin: "2022-01",
+      tiempo: "2019 - 2022",
+      opinion: "Diseñé flujos de onboarding, checkout y herramientas internas para operaciones comerciales.",
+    },
+    {
+      rol: "UX/UI Designer",
+      empresa: "Studio Norte",
+      empresaNit: "9013001137",
+      fechaInicio: "2017-01",
+      fechaFin: "2019-05",
+      tiempo: "2017 - 2019",
+      opinion: "",
+    },
+  ],
+};
+
+export const demoCompanyUser: CompanyProfile = {
+  id: "company-demo-20260401",
+  role: "company",
+  plan: "business",
+  displayName: "Orbita Hiring Lab SAS",
+  nombre: "Orbita Hiring Lab SAS",
+  rol: "Employer Admin",
+  email: "talentoco.empresa@gmail.com",
+  tipoRegistro: "empresa",
+  ubicacion: "Bogota, Colombia",
+  telefono: "6015550142",
+  website: "https://lumbrestudio.co",
+  avatar: "",
+  avatarStoredFileName: "",
+  companyName: "Orbita Hiring Lab SAS",
+  industry: "Producto digital y crecimiento",
+  companySize: "21-50",
+  companyDescription:
+    "Laboratorio de contratación que usa TalentSyncro para operar procesos de producto, diseño, growth y frontend con señales más claras de pipeline y match.",
+  companyCulture: "Cultura de ejecución, feedback corto y colaboración transversal entre hiring, producto y liderazgo.",
+  companyMission:
+    "Ayudar a equipos y profesionales a encontrarse con mejor contexto, menos ruido y procesos de selección más claros.",
+  companyVision:
+    "Construir una operación de talento donde el match sea más útil, transparente y accionable para empresas y candidatos.",
+  companyContactEmail: "talent@orbitahiring.example",
+  companyWebsite: "https://orbitahiring.example",
+  companyLocation: "Bogota, Colombia",
+  companyBenefits: ["Trabajo híbrido flexible", "Presupuesto de formación", "Seguro complementario"],
+  companySocialLinks: ["linkedin.com/company/orbita-hiring", "instagram.com/orbitahiring"],
+  companyBanner: "",
+  activeJobs: 3,
+  verificationStatus: "verified",
+  analyticsSummary: {
+    profileViews: 418,
+    applications: 94,
+    conversionRate: 26,
+  },
+  hiringFocus: ["Product Design", "Frontend", "Growth", "Product Management"],
+  billingHistory: [
+    {
+      id: "bill-001",
+      plan: "business",
+      amountCop: 79900,
+      status: "paid",
+      paidAt: "2026-02-01T10:00:00.000Z",
+      renewalAt: "2026-05-01T10:00:00.000Z",
+      description: "Renovación trimestral del plan Business",
+    },
+    {
+      id: "bill-002",
+      plan: "business",
+      amountCop: 79900,
+      status: "paid",
+      paidAt: "2026-01-01T10:00:00.000Z",
+      renewalAt: "2026-02-01T10:00:00.000Z",
+      description: "Activación inicial del plan Business",
+    },
+  ],
+};
+
+export const demoUser = demoCandidateUser;
+
+export const demoUserJobFit: UserJobFit = {
+  jobId: "job-001",
+  skillsMatch: [
+    { label: "Azure Architecture", score: 89, target: 92 },
+    { label: "DevOps / CI-CD", score: 91, target: 90 },
+    { label: "Infraestructura como código", score: 84, target: 88 },
+    { label: "Kubernetes", score: 78, target: 82 },
+    { label: "Observabilidad", score: 86, target: 85 },
+    { label: "Liderazgo técnico", score: 88, target: 90 },
+  ],
+};
